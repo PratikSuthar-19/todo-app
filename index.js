@@ -10,7 +10,8 @@ app.use(express.urlencoded({extended:true}));
 app.set("view engine" , "ejs");
 app.set("views" ,path.join(__dirname,"/views"))
 
-let port = 3000;
+
+let port = 3004;
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -18,17 +19,14 @@ const connection = mysql.createConnection({
     password :"psuthar19"
   });
 
-const data = [
-    {id : "12a",
-    username : "pratik",
-    password : "psuthar19",
-    email : "psuthar1903@gmail.com"
-    },
-    {id : "12b",
-    username : "krutik",
-    password : "keutik19",
-    email : "ksuthar1903@gmail.com"},
-]
+  const todo = [
+
+    {
+        title : "tile",
+        desc :" desc"
+    }
+
+  ];
 
 
 app.get("/" , (req , res)=>{
@@ -111,6 +109,24 @@ app.post("/login" , (req ,res)=>{
 })
 
 
+app.get("/todo" , (req ,res)=>{
+    res.render("todo.ejs" , {todo})
+})
+
+app.post("/todo" ,(req , res)=>{
+      let {title , desc} = req.body;
+
+      let d = {
+        title : title,
+        desc : desc
+      }
+
+      todo.push(d);
+      console.log(req.body);
+      console.log(todo);
+      res.redirect("/todo")
+
+})
 
 
 
