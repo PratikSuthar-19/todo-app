@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: rgb(36, 36, 36);
+    }
+    .main{
+        margin-left: 30px;
+        margin-top: 30px;
+       
+    }
+
+    .navbar{
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(46, 45, 45);
+    }
+
+    .navbar h1{
+        color: antiquewhite;
+      
+        font-weight: 500;
+    }
+
+    .left{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 50px;
+        gap: 20px;
+        font-size: 28px;
+        color: antiquewhite;
+    }
+
+    .new{
+        background-color:rgb(244, 234, 222);
+        width: 300px;
+        margin-left: 15px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+        
+        }
+    .new h3{
+        padding: 15px;
+        margin-left: 20px;
+        
+    }
+
+    .new input{
+        border: none;
+        padding: 10px;
+       margin-left: 20px;
+        width: 200px;
+        margin-top: 10px;
+        border-bottom: 2px rgb(29, 29, 29) solid;
+        font-size: medium;
+        background-color:rgb(244, 234, 222);
+    }
+   
+
+    .new button{
+
+        margin-top: 20px;
+       display: flex;
+       gap: 10px;
+       justify-content: center;
+       align-items: center;
+       background-color: rgb(215, 213, 213);
+ 
+        width: 100px;
+        height: 30px;
+        padding: 5px;
+        padding: 5px;
+        border-radius: 10px;
+        
+        margin-left: 20px;
+    }
+.todo-item{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+    .todo{
+        background-color: rgb(244, 234, 222);;
+       
+        width: 270px;
+        margin-left: 15px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+        margin-top: 50px;
+ 
+    }
+
+    .todo h3{
+        padding: 15px;
+        padding: 10px;
+        padding: 15px;
+        margin-left: 15px;
+    }
+    .todo p{
+        background-color: rgb(244, 234, 222);;
+      
+        margin-left: 28px;
+        font-size: medium;
+        font-weight: 500;
+        color: rgb(23, 23, 23)
+    }
+    .todo .icon{
+        background-color: rgb(244, 234, 222);;
+        display: flex;
+        justify-content: end;
+        padding: 10px;
+        margin-top: 20px;
+    }
+    .icon button{
+        height: 30px;
+        width: 30px;
+       background-color: rgb(82, 82, 249);
+       border-radius: 50%;
+        margin-right: 10px;
+        color: white;
+        box-shadow: 1px  5px 5px rgb(23, 23, 23);
+        
+    }
+    .icon i{
+        color: white;
+        font-size: medium;
+        font-weight: bold;
+    }
+
+
+
+</style>
+<body>
+
+     <div class="container">
+
+
+        <div class="navbar">
+
+            <div class="left">
+                <i class="fa-regular fa-circle-check"></i>
+                <h2>ToDo</h2>
+            </div>
+
+        </div>
+
+
+        <div class="main">
+              
+            <div class="new" >
+                <h3>Add new TODO</h3>
+                <form action="/todo" method="POST">
+                    <input type="text" placeholder=" Title" name="title"><br>
+                    <input type="text" placeholder="Description" name="desc"><br>
+                    <button type="submit"> <i class="fa-solid fa-plus"></i> ADD</button>
+                </form>
+            </div>
+
+
+           <div class="todo-item">
+        
+
+            <%for(let i=0 ; i<todo.length; i++){%>
+
+                <div class="todo">
+                    <h3><%=todo[i].title%></h3>
+                    <p><%=todo[i].desc%></p>
+                    <div class="icon">
+                         <form action="">
+                            <button><i class="fa-solid fa-check"></i></button>
+                         </form>
+                         <form action="">
+                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                         </form>
+                         <form action="">
+                            <button><i class="fa-solid fa-trash"></i></button>
+                         </form>
+                    </div>
+                </div>
+
+            <%}%>
+
+            
+
+           </div>
+
+        </div>
+
+
+     </div>
+</body>
+</html>
