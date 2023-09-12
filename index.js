@@ -2,16 +2,18 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { v4: uuidv4 } = require('uuid');
+const methodOverride = require("method-override");
 const mysql = require('mysql2');
 
 
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride("_method"));
 
 app.set("view engine" , "ejs");
 app.set("views" ,path.join(__dirname,"/views"))
 
 
-let port = 3004;
+let port = 3008;
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -19,12 +21,12 @@ const connection = mysql.createConnection({
     password :"psuthar19"
   });
 
-  const todo = [
+  let todo = [
 
-    {
-        title : "tile",
-        desc :" desc"
-    }
+    // {   id :"123",
+    //     title : "tile",
+    //     desc :" desc"
+    // }
 
   ];
 
@@ -84,7 +86,7 @@ app.post("/login" , (req ,res)=>{
              
             
            if(email === result[0].email && password === result[0].password){
-                res.redirect("/");
+                res.redirect("/todo");
             }
             
         })
@@ -115,8 +117,9 @@ app.get("/todo" , (req ,res)=>{
 
 app.post("/todo" ,(req , res)=>{
       let {title , desc} = req.body;
-
+   let id = uuidv4();
       let d = {
+        id : id,
         title : title,
         desc : desc
       }
@@ -127,6 +130,43 @@ app.post("/todo" ,(req , res)=>{
       res.redirect("/todo")
 
 })
+app.post("/todo/:id" ,(req ,res)=>{
+
+    let {id }= req.params;
+    
+   
+   let list = todo.find((el) =>( el.id === id));
+
+    res.render("work.ejs" , {list})
+})
+
+app.patch("/todo/:id" , (req, res)=>{
+    let {id} = req.params;
+
+    let list = todo.find((el) =>( el.id === id));
+    let { title , desc} = req.body
+  
+ list.title = title;
+ list.desc = desc;
+
+
+ res.redirect("/todo");
+   
+
+
+})
+
+
+app.delete("/todo/:id" ,(req,res)=>{
+     let{ id} =  req.params;
+     console.log(id);
+   
+
+     todo = todo.filter((el) =>(id !== el.id))
+
+     res.redirect("/todo");
+})
+
 
 
 

@@ -147,6 +147,12 @@
         font-weight: bold;
     }
 
+    .change {
+        background-color: greenyellow;
+
+    }
+   
+
 
 
 </style>
@@ -178,21 +184,23 @@
 
 
            <div class="todo-item">
+
+         
         
 
             <%for(let i=0 ; i<todo.length; i++){%>
 
                 <div class="todo">
                     <h3><%=todo[i].title%></h3>
-                    <p><%=todo[i].desc%></p>
-                    <div class="icon">
-                         <form action="">
+                    <p id="p"><%=todo[i].desc%></p>
+                    <div  id="icon" class="icon">
+                         <form id="done">
                             <button><i class="fa-solid fa-check"></i></button>
                          </form>
-                         <form action="">
+                         <form action="/todo/<%=todo[i].id%>" method="POST">
                             <button><i class="fa-solid fa-pen-to-square"></i></button>
                          </form>
-                         <form action="">
+                         <form action="/todo/<%=todo[i].id%>?_method=DELETE" method="POST">
                             <button><i class="fa-solid fa-trash"></i></button>
                          </form>
                     </div>
@@ -208,5 +216,26 @@
 
 
      </div>
+     <script>
+        let b = document.querySelector('#done');
+        let todo = document.querySelector('.todo');
+        let p = document.querySelector("#p");
+        let icon = document.querySelector("#icon");
+
+        const changecolor = () =>{
+             todo.style.backgroundColor = "#8fbc8f";
+            p.style.backgroundColor = "#8fbc8f";
+            icon.style.backgroundColor = "#8fbc8f";
+           
+        }
+
+        b.addEventListener("click" ,  changecolor)
+            // todo.style.backgroundColor = "green";
+            // p.style.backgroundColor = "green";
+            // icon.style.backgroundColor = "green";
+ 
+
+
+     </script>
 </body>
 </html>
