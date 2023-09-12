@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(36, 36, 36);
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+       
+
+   
+   
+  
+  
+   
+
+    .new{
+        background-color:rgb(244, 234, 222);
+        width: 300px;
+        margin-left: 15px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+        
+        }
+    .new h3{
+        padding: 15px;
+        margin-left: 20px;
+        
+    }
+
+    .new input{
+        border: none;
+        padding: 10px;
+       margin-left: 20px;
+        width: 200px;
+        margin-top: 10px;
+        border-bottom: 2px rgb(29, 29, 29) solid;
+        font-size: medium;
+        background-color:rgb(244, 234, 222);
+    }
+   
+
+    .new button{
+
+        margin-top: 20px;
+       display: flex;
+       gap: 10px;
+       justify-content: center;
+       align-items: center;
+       background-color: rgb(215, 213, 213);
+ 
+        width: 100px;
+        height: 30px;
+        padding: 5px;
+        padding: 5px;
+        border-radius: 10px;
+        
+        margin-left: 20px;
+    }
+
+
+</style>
+<body>
+    <div class="container">
+        <div class="todo">
+
+
+            <div class="new" >
+                <h3>Update TODO</h3>
+                <form action="/todo/<%=list.id%>?_method=PATCH" method="POST">
+                    <input type="text" value="<%=list.title%>" name="title"> <br>
+                    <input type="text" value="<%=list.desc%>" name="desc"><br>
+                    <button type="submit"> <i class="fa-solid fa-plus"></i>UPDATE</button>
+                </form>
+            </div>
+
+
+
+               
+            </div>
+    </div>
+    
+</body>
+</html>
